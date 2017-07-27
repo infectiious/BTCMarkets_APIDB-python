@@ -1,4 +1,4 @@
-# [Python Docker Container](https://hub.docker.com/_/python/) pulling data from BTCMarkets.net 
+# [Python](https://hub.docker.com/_/python/) Docker container pulling data from BTCMarkets.net 
 
 A couple of Python3 scripts I made to pull data from BTCMarkets.net and log the results into a MySQL database for graphical visualisation through [Grafana](https://github.com/grafana/grafana).
 
