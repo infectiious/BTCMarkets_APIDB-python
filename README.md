@@ -10,6 +10,11 @@ Get started by cloning the repository and adding your database details connectio
 
 As this is running in a docker container the only requirement is that you have Docker installed. If you do not want to run this in a container you will have to use Pip to install the 'Requests' and 'Pymysql' modules. 
 
+```
+pip install requests
+pip install pymysql
+```
+
 ### Installation
 
 To run in a container clone the repository, update your server details in 'connections.py' and run the 'runcontainer.sh' script to build the image and start the container. 
