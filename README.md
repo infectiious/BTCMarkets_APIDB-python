@@ -31,7 +31,7 @@ Then start the container. You may have to run this with elevated privelages if y
 sh ./runcontainer.sh
 ```
 
-### Test if working. 
+### Test if working
 
 To test if the container is working run 
 
