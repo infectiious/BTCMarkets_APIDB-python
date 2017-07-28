@@ -4,30 +4,35 @@ import time
 import datetime
 from multiprocessing import Process
 
-# BTCMarkets.net.
 
 def BTCUpdate():
-    print ("Updating Bitcoin prices.")
+    print("Updating Bitcoin prices.")
     os.system("python BTCAUDTicker.py")
 
+
 def ETCUpdate():
-    print ("Updating Ethereum classic prices.")
+    print("Updating Ethereum classic prices.")
     os.system("python ETCAUDTicker.py")
 
+
 def ETHUpdate():
-    print ("Updating Ethereum prices.")
+    print("Updating Ethereum prices.")
     os.system("python ETHAUDTicker.py")
 
+
 def LTCUpdate():
-    print ("Updating Litcoin prices.")
+    print("Updating Litcoin prices.")
     os.system("python LTCAUDTicker.py")
 
+
 def XRPUpdate():
-    print ("Updating XRP prices.")
+    print("Updating XRP prices.")
     os.system("python XRPAUDTicker.py")
 
+
 def PrintTime():
-    print("Time:",datetime.datetime.utcnow())
+    print("Time:", datetime.datetime.utcnow())
+
 
 def APICollect():
     if __name__ == '__main__':
@@ -38,6 +43,7 @@ def APICollect():
         Process(target=LTCUpdate).start()
         Process(target=XRPUpdate).start()
         time.sleep(150)
+
 
 while True:
     APICollect()
