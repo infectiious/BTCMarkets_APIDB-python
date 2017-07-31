@@ -1,3 +1,6 @@
-./__python__
+__python__
 *.swp
 *.todo
+__pycache__/
+*.py[cod]
+*$py.class
