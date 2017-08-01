@@ -4,30 +4,30 @@ import time
 import datetime
 from multiprocessing import Process
 
-
+# Updating Bitcoin.
 def BTCUpdate():
     print("Updating Bitcoin prices.")
-    os.system("python BTCAUDTicker.py")
+    os.system(["python", "btc_update.py"], cwd="Markets")
 
-
+# Updating Ethereum Classic.
 def ETCUpdate():
     print("Updating Ethereum classic prices.")
-    os.system("python ETCAUDTicker.py")
+    os.system(["python", "etc_update.py"], cwd="Markets")
 
-
+# Updating Ethereum.
 def ETHUpdate():
     print("Updating Ethereum prices.")
-    os.system("python ETHAUDTicker.py")
+    os.system(["python", "eth_update.py"], cwd="Markets")
 
-
+# Updating Litecoin.
 def LTCUpdate():
     print("Updating Litcoin prices.")
-    os.system("python LTCAUDTicker.py")
+    os.system(["python", "ltc_update.py"], cwd="Markets")
 
-
+# Updating Ripple.
 def XRPUpdate():
     print("Updating XRP prices.")
-    os.system("python XRPAUDTicker.py")
+    os.system(["python", "xrp_update.py"], cwd="Markets")
 
 
 def PrintTime():
