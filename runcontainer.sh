@@ -1,11 +1,11 @@
 #!/bin/bash
 echo 'Stopping and removing old container'
-docker kill Infectiious_APICollect >/dev/null
-docker container rm Infectiious_APICollect >/dev/null
+docker kill PharaohScript_Container >/dev/null
+docker container rm PharaohScript_Container >/dev/null
 
 echo 'Rebuilding image...'
-docker build -t infectiious_python . >>./buildcontainer.log
+docker build -t PharaohScript_image . >>./buildcontainer.log
 
 echo 'Starting container.'
-docker run -d --name Infectiious_APICollect infectiious_python >/dev/null
-echo 'Container running as Infectiious_APICollect'
+docker run -d --name PharaohScript_Container PharaohScript_image >/dev/null
+echo 'Container running as PharaohScript_Container'

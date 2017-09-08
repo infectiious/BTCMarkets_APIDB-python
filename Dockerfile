@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "./BTCMarkets_fetch.py" ]
+CMD [ "python", "./Pharaoh.py" ]
