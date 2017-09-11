@@ -1,49 +1,31 @@
+#!/usr/bin/env python3
 import os
 import threading
 import time
 import datetime
 from multiprocessing import Process
+from Markets.BTCMarkets.btcmarkets_api import Market
 
-# Updating Bitcoin.
-def BTCUpdate():
-    print("Updating Bitcoin prices.")
-    os.system(["python", "btc_update.py"], cwd="Markets")
-
-# Updating Ethereum Classic.
-def ETCUpdate():
-    print("Updating Ethereum classic prices.")
-    os.system(["python", "etc_update.py"], cwd="Markets")
-
-# Updating Ethereum.
-def ETHUpdate():
-    print("Updating Ethereum prices.")
-    os.system(["python", "eth_update.py"], cwd="Markets")
-
-# Updating Litecoin.
-def LTCUpdate():
-    print("Updating Litcoin prices.")
-    os.system(["python", "ltc_update.py"], cwd="Markets")
-
-# Updating Ripple.
-def XRPUpdate():
-    print("Updating XRP prices.")
-    os.system(["python", "xrp_update.py"], cwd="Markets")
-
+BTC = Market("/market/BTC/AUD/tick", "BTC")
+LTC = Market("/market/LTC/AUD/tick", "LTC")
+ETH = Market("/market/ETH/AUD/tick", "ETH")
+ETC = Market("/market/ETC/AUD/tick", "ETC")
+XRP = Market("/market/XRP/AUD/tick", "XRP")
+BCH = Market("/market/BCH/AUD/tick", "BCH")
 
 def PrintTime():
     print("Time:", datetime.datetime.utcnow())
 
-
 def APICollect():
     if __name__ == '__main__':
         Process(target=PrintTime).start()
-        Process(target=BTCUpdate).start()
-        Process(target=ETCUpdate).start()
-        Process(target=ETHUpdate).start()
-        Process(target=LTCUpdate).start()
-        Process(target=XRPUpdate).start()
-        time.sleep(150)
-
+        Process(target=BTC.update_data()).start()
+        Process(target=LTC.update_data()).start()
+        Process(target=ETH.update_data()).start()
+        Process(target=ETC.update_data()).start()
+        Process(target=XRP.update_data()).start()
+        Process(target=BCH.update_data()).start()
+        time.sleep(10)
 
 while True:
     APICollect()
