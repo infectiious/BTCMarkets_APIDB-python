@@ -25,7 +25,7 @@ def APICollect():
         Process(target=ETC.update_data()).start()
         Process(target=XRP.update_data()).start()
         Process(target=BCH.update_data()).start()
-        time.sleep(10)
+        time.sleep(150)
 
 while True:
     APICollect()

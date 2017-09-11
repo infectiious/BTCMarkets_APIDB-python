@@ -19,9 +19,9 @@ class Market(object):
     self.url = self.domain + uri
 
   def update_data(self):
-    # db = pymysql.connect(host=hostname, user=username, passwd=password, port=portnumber, db=database)
-    # db.autocommit(True)
-    # cur = db.cursor()
+    db = pymysql.connect(host=hostname, user=username, passwd=password, port=portnumber, db=database)
+    db.autocommit(True)
+    cur = db.cursor()
     r = requests.get(self.url, verify=True)
     ask = str(r.json()["bestAsk"])
     bid = str(r.json()["bestBid"])
@@ -30,8 +30,8 @@ class Market(object):
     ltime = time.ctime(tstamp)
     utime = time.asctime(time.gmtime(tstamp))
     print ask
-    # query = "INSERT INTO %smarkets_eth(ask,bid,lastsale,recorded_time) " \
-    #    "VALUES(%s,%s,%s,FROM_UNIXTIME(%s))" % ( self.name, ask, bid, last, tstamp)
-    # cur.execute(query)
-    # cur.close()
-    # db.close()
+    query = "INSERT INTO %smarkets_eth(ask,bid,lastsale,recorded_time) " \
+    "VALUES(%s,%s,%s,FROM_UNIXTIME(%s))" % ( self.name, ask, bid, last, tstamp)
+    cur.execute(query)
+    cur.close()
+    db.close()
