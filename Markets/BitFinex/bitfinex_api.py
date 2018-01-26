@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 import argparse
-# import requests
+import requests
 import time
 import datetime
 import random
-# import pymysql
+import pymysql
 from connections import hostname, username, password, portnumber, database
 
 
-class MarketBTCMarkets(object):
+class MarketBitfinex(object):
     # Set variables for API String.
-    domain = "https://api.btcmarkets.net"
+    domain = "https://api.bitfinex.com"
     url = ""
     uri = ""
 
