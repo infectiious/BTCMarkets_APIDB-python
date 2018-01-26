@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import argparse
-import requests
+# import requests
 import time
 import datetime
 import random
-import pymysql
+# import pymysql
 from connections import hostname, username, password, portnumber, database
 
 
@@ -16,11 +16,12 @@ class MarketBitfinex(object):
 
     # Function to build API string.
     def __init__(self, uri, name, market):
-        super(Market, self).__init__()
+        super(MarketBitfinex, self).__init__()
         self.name = name
         self.uri = uri
         self.url = self.domain + uri
-        self.dbstr = self.market.lower() + self.name.lower()
+        self.market = market
+        dbstr = market.lower() + "_" + name.lower()
 
     # Function to query API string and write to mysql database.
     def update_data(self):
