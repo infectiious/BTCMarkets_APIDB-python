@@ -8,15 +8,15 @@ import random
 from connections import hostname, username, password, portnumber, database
 
 
-class MarketBTCMarkets(object):
+class MarketKuCoin(object):
     # Set variables for API String.
-    domain = "https://api.btcmarkets.net"
+    domain = "https://api.kraken.com"
     url = ""
     uri = ""
 
     # Function to build API string.
     def __init__(self, uri, name, market):
-        super(MarketBTCMarkets, self).__init__()
+        super(MarketKuCoin, self).__init__()
         self.name = name
         self.uri = uri
         self.url = self.domain + uri
@@ -30,12 +30,15 @@ class MarketBTCMarkets(object):
        # db.autocommit(True)
        # cur = db.cursor()
        r = requests.get(self.url, verify=True)
-       ask = str(r.json()["bestAsk"])
-       bid = str(r.json()["bestBid"])
-       last = str(r.json()["lastPrice"])
-       tstamp = r.json()["timestamp"]
-       ltime = time.ctime(tstamp)
-       utime = time.asctime(time.gmtime(tstamp))
+       rdata = (r.json()["data"])
+       ask = str(rdata.get("sell", "none"))
+       bid = str(rdata.get("buy", "none"))
+       last = str(rdata.get("lastDealPrice", "none"))
+       tstampstr = str(rdata.get("datetime", "none"))
+       tstampint = tstampstr.replace(' ', '')[:-3]
+       tstampint = float(tstampint)
+       ltime = time.ctime(tstampint)
+       utime = time.asctime(time.gmtime(tstampint))
        print (ask)
        print (str(r.json()))
        # query = "INSERT INTO " + dbstr + "(ask,bid,lastsale,recorded_time) " \

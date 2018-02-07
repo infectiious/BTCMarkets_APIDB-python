@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import argparse
-# import requests
+import requests
 import time
 import datetime
 import random
@@ -29,18 +29,21 @@ class MarketKuCoin(object):
        #                      passwd=password, port=portnumber, db=database)
        # db.autocommit(True)
        # cur = db.cursor()
-       # r = requests.get(self.url, verify=True)
-       ask = str(r.json()["bestAsk"])
-       bid = str(r.json()["bestBid"])
-       last = str(r.json()["lastPrice"])
-       tstamp = r.json()["timestamp"]
-       ltime = time.ctime(tstamp)
-       utime = time.asctime(time.gmtime(tstamp))
+       r = requests.get(self.url, verify=True)
+       rdata = (r.json()["data"])
+       ask = str(rdata.get("sell", "none"))
+       bid = str(rdata.get("buy", "none"))
+       last = str(rdata.get("lastDealPrice", "none"))
+       tstampstr = str(rdata.get("datetime", "none"))
+       tstampint = tstampstr.replace(' ', '')[:-3]
+       tstampint = float(tstampint)
+       ltime = time.ctime(tstampint)
+       utime = time.asctime(time.gmtime(tstampint))
        print (ask)
-       print (self.dbstr)
-       # query = "INSERT INTO " + self.dbstr + "(ask,bid,lastsale,recorded_time) " \
+       print (str(r.json()))
+       # query = "INSERT INTO " + dbstr + "(ask,bid,lastsale,recorded_time) " \
        #         "VALUES(%s,%s,%s,FROM_UNIXTIME(%s))" % (ask, bid, last, tstamp)
-       print (query)
+       # print (query)
        # cur.execute(query)
        # cur.close()
        # db.close()
